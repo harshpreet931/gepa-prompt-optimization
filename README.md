@@ -1,23 +1,10 @@
 # GEPA prompt optimization against the local Grid AI proxy
 
 [GEPA](https://github.com/gepa-ai/gepa) optimizes a system prompt by running
-rollouts, reflecting on traces with an LLM, and mutating the candidate. This
-project wires it up against the local `gridAIloaddistributionserver` (which
-round-robins API keys to `grid.ai.juspay.net`).
-
-## How the pieces fit
-
-```
-run_gepa.py
-  └── gepa.optimize(task_lm="openai/nemotron", reflection_lm="openai/deepseek")
-        └── litellm.completion(model="openai/<name>")
-              └── HTTP POST http://localhost:3456/v1/chat/completions   (OPENAI_API_BASE)
-                    └── gridAIloaddistributionserver overwrites Authorization
-                          └── https://grid.ai.juspay.net
-```
+rollouts, reflecting on traces with an LLM, and mutating the candidate.
 
 Because the proxy **overwrites** the `Authorization` header (server.js:27),
-the `OPENAI_API_KEY` LiteLLM sends is irrelevant — any non-empty string works.
+the `OPENAI_API_KEY` LiteLLM sends is irrelevant, any non-empty string works.
 What matters is `OPENAI_API_BASE` pointing at the proxy.
 
 ## Setup
