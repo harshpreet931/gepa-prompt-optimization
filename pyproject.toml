@@ -1,0 +1,11 @@
+[project]
+name = "gepa-prompt-opt"
+version = "0.1.0"
+description = "GEPA prompt optimization wired to the local Grid AI load balancer."
+requires-python = ">=3.12"
+dependencies = [
+    "datasets>=4.8.5",
+    "gepa>=0.1.1",
+    "litellm>=1.86.0",
+    "python-dotenv>=1.2.2",
+]

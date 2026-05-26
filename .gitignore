@@ -1,0 +1,17 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Local config and run artifacts
+.env
+runs/
+runs_guidelines/
+runs_guidelines2/
+eval_holdout_runs/
